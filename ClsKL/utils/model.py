@@ -41,7 +41,15 @@ def cls_model(args):
         feature_model.pop()
         feature_model.append(nn.Linear(num_ftrs, args.num_class))
         model.classifier = nn.Sequential(*feature_model)
-
+        
+    elif args.net_type == "efficientnet_b7":
+        
+        model = models.efficientnet_b7(pretrained = args.pretrained)
+        
+        else:
+            return None
+        
+        
     elif args.net_type == "densenet":
         if args.depth == "121":
             model = models.densenet121(pretrained = args.pretrained)
