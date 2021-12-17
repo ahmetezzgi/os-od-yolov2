@@ -7,9 +7,9 @@ from torch import nn, optim
 from torch.autograd import Variable
 import time
 
-from torch_util import LRScheduler
-from loss_util import weighted_loss
-from eval_eng import eval_test
+from utils.torch_util import LRScheduler
+from utils.loss_util import weighted_loss
+from utils.eval_eng import eval_test
 
 
 def train_model(args, model, dset_loaders, dset_size):
