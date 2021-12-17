@@ -26,6 +26,9 @@ def train_model(args, model, dset_loaders, dset_size):
     elif args.optim == 'Adam':
         optimizer = optim.Adam(model.parameters(), lr=args.lr,
                                weight_decay=args.weight_decay)
+    elif args.optim == 'AdamW':
+        optimizer = optim.AdamW(model.parameters(), lr=args.lr,
+                               weight_decay=args.weight_decay)
     elif args.optim == 'RMSprop':
         optimizer = optim.RMSprop(model.parameters(), lr=args.lr,
                                   weight_decay=args.weight_decay, momentum=0.9)
