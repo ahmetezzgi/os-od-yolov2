@@ -46,8 +46,12 @@ def cls_model(args):
         
         model = models.efficientnet_b7(pretrained = args.pretrained)
         
-        else:
-            return None
+        num_ftrs = model.classifier[1].in_features
+        feature_model = list(model.classifier.children())
+        feature_model.pop()
+        feature_model.append(nn.Linear(num_ftrs, args.num_class))
+        model.classifier = nn.Sequential(*feature_model)
+        
         
         
     elif args.net_type == "densenet":
