@@ -19,7 +19,7 @@ def train_model(args, model, dset_loaders, dset_size):
         shutil.rmtree(best_model_path)
     os.makedirs(best_model_path)
 
-    criterion = nn.MultiMarginLoss()
+    criterion = nn.CrossEntropyLoss()
     if args.optim == 'SGD':
         optimizer = optim.SGD(model.parameters(), lr=args.lr,
                               momentum=0.9, weight_decay=args.weight_decay)
